@@ -2,7 +2,6 @@ module Moonstone::Api
   AUTHORIZATION_TOKEN_KEY              = "token="
   AUTHORIZATION_TOKEN_REGEX            = /^(Token|Bearer)\s+/
   AUTHORIZATION_PAIR_DELIMITERS        = /(?:,|;|\t+)/
-
   AUTHORIZATION_SPLIT_RAW_PARAMS       = /=(.+)?/
   AUTHORIZATION_GSUB_PARAMS_ARRAY_FROM = /^"|"$/
 
