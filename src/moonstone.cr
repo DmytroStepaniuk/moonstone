@@ -1,5 +1,5 @@
-require "./moonstone/*"
+require "./moonstone/**"
 
 module Moonstone
-  include Api
+  include Api::Controller
 end
