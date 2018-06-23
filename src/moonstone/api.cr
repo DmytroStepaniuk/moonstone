@@ -8,7 +8,7 @@ module Moonstone::Api
   def authorization_token_and_options
     _raw_params = request.headers["Authorization"].sub(AUTHORIZATION_TOKEN_REGEX, "").split(/\s*#{ AUTHORIZATION_PAIR_DELIMITERS }\s*/)
 
-     if not( _raw_params.first =~ %r{\A#{ AUTHORIZATION_TOKEN_KEY }}) )
+     if not( _raw_params.first =~ %r{\A#{ AUTHORIZATION_TOKEN_KEY }} )
       _raw_params[0] = "#{ AUTHORIZATION_TOKEN_KEY }#{ _raw_params.first }"
     end
 
