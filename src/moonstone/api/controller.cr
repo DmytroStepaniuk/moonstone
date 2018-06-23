@@ -50,7 +50,7 @@ module Moonstone::Api::Controller
       #
       # => Accord::ErrorList
       #
-      elsif error.responds_to?(:field)
+      elsif error.responds_to?(:attr)
         resource_errors[error.attr.to_s] ||= [] of String
         resource_errors[error.attr.to_s].push error.message.to_s
       else
