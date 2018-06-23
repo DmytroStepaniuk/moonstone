@@ -44,13 +44,13 @@ module Moonstone::Api
       #
       # => Array(Granite::Error)
       #
-      if error.respond_to?(:attr)
+      if error.responds_to?(:attr)
         resource_errors[error.attr.to_s] ||= [] of String
         resource_errors[error.attr.to_s].push error.message.to_s
       #
       # => Accord::ErrorList
       #
-      elsif error.respond_to?(:field)
+      elsif error.responds_to?(:field)
         resource_errors[error.attr.to_s] ||= [] of String
         resource_errors[error.attr.to_s].push error.message.to_s
       else
