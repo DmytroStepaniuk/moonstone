@@ -44,9 +44,9 @@ module Moonstone::Api
       #
       # => Array(Granite::Error)
       #
-      if error.responds_to?(:attr)
-        resource_errors[error.attr.to_s] ||= [] of String
-        resource_errors[error.attr.to_s].push error.message.to_s
+      if error.responds_to?(:field)
+        resource_errors[error.field.to_s] ||= [] of String
+        resource_errors[error.field.to_s].push error.message.to_s
       #
       # => Accord::ErrorList
       #
