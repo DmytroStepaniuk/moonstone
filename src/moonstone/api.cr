@@ -5,6 +5,9 @@ module Moonstone::Api
   AUTHORIZATION_SPLIT_RAW_PARAMS       = /=(.+)?/
   AUTHORIZATION_GSUB_PARAMS_ARRAY_FROM = /^"|"$/
 
+  #
+  # Parse `Authorization` header, return token and options in `Rails`-style
+  #
   def authorization_token_and_options
     _raw_params = request.headers["Authorization"].sub(AUTHORIZATION_TOKEN_REGEX, "").split(/\s*#{ AUTHORIZATION_PAIR_DELIMITERS }\s*/)
 
@@ -29,5 +32,34 @@ module Moonstone::Api
     options.reject!("token")
 
     [rewrite_param_values.first, options]
+  end
+
+  #
+  # => Rails-inspired errors hash
+  #
+  def decorated_errors_of(resource)
+    resource_errors = {} of String => Array(String)
+
+    resource.errors.each do |error|
+      #
+      # => Array(Granite::Error)
+      #
+      if error.respond_to?(:attr)
+        resource_errors[error.attr.to_s] ||= [] of String
+        resource_errors[error.attr.to_s].push error.message.to_s
+      #
+      # => Accord::ErrorList
+      #
+      elsif error.respond_to?(:field)
+        resource_errors[error.attr.to_s] ||= [] of String
+        resource_errors[error.attr.to_s].push error.message.to_s
+      else
+        raise "Currently we support only `Accord::ErrorList` and `Array(Granite::Error)`"
+      end
+    end
+
+    {
+      errors: resource_errors,
+    }
   end
 end
