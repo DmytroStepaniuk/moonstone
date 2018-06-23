@@ -1,19 +1,21 @@
 module Moonstone::Api
-  TOKEN_KEY              = "token="
-  TOKEN_REGEX            = /^(Token|Bearer)\s+/
-  AUTHN_PAIR_DELIMITERS  = /(?:,|;|\t+)/
+  AUTHORIZATION_TOKEN_KEY              = "token="
+  AUTHORIZATION_TOKEN_REGEX            = /^(Token|Bearer)\s+/
+  AUTHORIZATION_PAIR_DELIMITERS        = /(?:,|;|\t+)/
 
-  SPLIT_RAW_PARAMS       = /=(.+)?/
-  GSUB_PARAMS_ARRAY_FROM = /^"|"$/
+  AUTHORIZATION_SPLIT_RAW_PARAMS       = /=(.+)?/
+  AUTHORIZATION_GSUB_PARAMS_ARRAY_FROM = /^"|"$/
 
   def authorization_token_and_options
-    _raw_params = request.headers["Authorization"].sub(TOKEN_REGEX, "").split(/\s*#{ AUTHN_PAIR_DELIMITERS }\s*/)
+    _raw_params = request.headers["Authorization"].sub(AUTHORIZATION_TOKEN_REGEX, "").split(/\s*#{ AUTHORIZATION_PAIR_DELIMITERS }\s*/)
 
-    _raw_params[0] = "#{TOKEN_KEY}#{_raw_params.first}" if !(_raw_params.first =~ /\Atoken=/ )
+     if not( _raw_params.first =~ %r{\A#{ AUTHORIZATION_TOKEN_KEY }}) )
+      _raw_params[0] = "#{ AUTHORIZATION_TOKEN_KEY }#{ _raw_params.first }"
+    end
 
-    params_array_from = _raw_params.map { |param| param.split SPLIT_RAW_PARAMS }
+    params_array_from = _raw_params.map { |param| param.split AUTHORIZATION_SPLIT_RAW_PARAMS }
 
-    rewrite_param_values = params_array_from.map { |param| (param[1] || "".dup).gsub GSUB_PARAMS_ARRAY_FROM, "" }
+    rewrite_param_values = params_array_from.map { |param| (param[1] || "".dup).gsub AUTHORIZATION_GSUB_PARAMS_ARRAY_FROM, "" }
 
     options_array = params_array_from.map do |param|
       param.map { |param_lvl2| param_lvl2.empty? ? nil : param_lvl2 }.compact
