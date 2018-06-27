@@ -62,4 +62,14 @@ module Moonstone::Api::Controller
       errors: resource_errors,
     }
   end
+
+  private def decorated_errors_of_params(params)
+    params_errors = {} of String => Array(String)
+
+    params.errors.each do |error|
+      # [e.param, e.value, e.message]
+      params_errors[error.param] ||= [] of String
+      params_errors[error.param].push error.message
+    end
+  end
 end
