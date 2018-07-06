@@ -9,10 +9,10 @@ module Moonstones::Api::Controller
   # Parse `Authorization` header, return token and options in `Rails`-style
   #
   def authorization_token_and_options
-    _raw_params = request.headers["Authorization"].sub(AUTHORIZATION_TOKEN_REGEX, "").split(/\s*#{ AUTHORIZATION_PAIR_DELIMITERS }\s*/)
+    _raw_params = request.headers["Authorization"].sub(AUTHORIZATION_TOKEN_REGEX, "").split(/\s*#{AUTHORIZATION_PAIR_DELIMITERS}\s*/)
 
-     if !( _raw_params.first =~ %r{\A#{ AUTHORIZATION_TOKEN_KEY }} )
-      _raw_params[0] = "#{ AUTHORIZATION_TOKEN_KEY }#{ _raw_params.first }"
+    if !(_raw_params.first =~ %r{\A#{AUTHORIZATION_TOKEN_KEY}})
+      _raw_params[0] = "#{AUTHORIZATION_TOKEN_KEY}#{_raw_params.first}"
     end
 
     params_array_from = _raw_params.map { |param| param.split AUTHORIZATION_SPLIT_RAW_PARAMS }
@@ -47,9 +47,9 @@ module Moonstones::Api::Controller
       if error.responds_to?(:field)
         resource_errors[error.field.to_s] ||= [] of String
         resource_errors[error.field.to_s].push error.message.to_s
-      #
-      # => Accord::ErrorList
-      #
+        #
+        # => Accord::ErrorList
+        #
       elsif error.responds_to?(:attr)
         resource_errors[error.attr.to_s] ||= [] of String
         resource_errors[error.attr.to_s].push error.message.to_s
