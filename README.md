@@ -18,11 +18,11 @@ dependencies:
 require "moonstone"
 ```
 
-TODO: Write usage instructions here
+_instructions are comming_
 
 ## Development
 
-TODO: Write development instructions here
+_soon_
 
 ## Contributing
 
