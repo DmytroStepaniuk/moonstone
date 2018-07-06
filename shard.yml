@@ -4,6 +4,9 @@ version: 0.1.0
 authors:
   - Dmytro Stepaniuk <stepaniuk@mlsdev.com>
 
+description:
+  Useful tools to build API using AmberFramework or similar
+
 crystal: 0.25.0
 
 license: MIT
