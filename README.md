@@ -1,3 +1,5 @@
+[![GitHub release](https://img.shields.io/github/release/MLSDev/moonstones.svg)](https://github.com/MLSDev/moonstones/releases)
+
 # moonstones
 
 Few useful tools to build API using AmberFramework
