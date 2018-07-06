@@ -1,6 +1,6 @@
 # moonstone
 
-TODO: Write a description here
+Few useful tools to build API using AmberFramework
 
 ## Installation
 
@@ -9,7 +9,7 @@ Add this to your application's `shard.yml`:
 ```yaml
 dependencies:
   moonstone:
-    github: DmytroStepaniuk/moonstone
+    github: MLSDev/moonstone
 ```
 
 ## Usage
@@ -26,7 +26,7 @@ TODO: Write development instructions here
 
 ## Contributing
 
-1. Fork it (<https://github.com/DmytroStepaniuk/moonstone/fork>)
+1. Fork it (<https://github.com/MLSDev/moonstone/fork>)
 2. Create your feature branch (`git checkout -b my-new-feature`)
 3. Commit your changes (`git commit -am 'Add some feature'`)
 4. Push to the branch (`git push origin my-new-feature`)
