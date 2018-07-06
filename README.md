@@ -1,4 +1,5 @@
 [![GitHub release](https://img.shields.io/github/release/MLSDev/moonstones.svg)](https://github.com/MLSDev/moonstones/releases)
+[![Build Status](https://travis-ci.org/MLSDev/moonstones.svg?branch=master)](https://travis-ci.org/MLSDev/moonstones)
 
 # moonstones
 
