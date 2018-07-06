@@ -1,2 +1,2 @@
 require "spec"
-require "../src/moonstone"
+require "../src/moonstones"

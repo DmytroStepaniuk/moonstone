@@ -1,4 +1,4 @@
-module Moonstone::Api::Controller
+module Moonstones::Api::Controller
   AUTHORIZATION_TOKEN_KEY              = "token="
   AUTHORIZATION_TOKEN_REGEX            = /^(Token|Bearer)\s+/
   AUTHORIZATION_PAIR_DELIMITERS        = /(?:,|;|\t+)/

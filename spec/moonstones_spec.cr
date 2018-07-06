@@ -1,6 +1,6 @@
 require "./spec_helper"
 
-describe Moonstone do
+describe Moonstones do
   it "works" do
     false.should eq(true)
   end
